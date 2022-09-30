@@ -1,0 +1,84 @@
+package com.example.demo.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.*;
+
+@Entity
+public class Wallet {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer walletId;
+	
+	private Double balance;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Bank bank;
+	
+	@JsonIgnore
+	@OneToMany
+	private List<Transaction> transactions;
+	
+	@JsonIgnore
+	@OneToMany
+	private List<Beneficiary> beneficiaries;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
+
+	public Integer getWalletId() {
+		return walletId;
+	}
+
+	public void setWalletId(Integer walletId) {
+		this.walletId = walletId;
+	}
+
+	public Double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(Double balance) {
+		this.balance = balance;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Wallet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+
+	public List<Beneficiary> getBeneficiaries() {
+		return beneficiaries;
+	}
+
+	public void setBeneficiaries(List<Beneficiary> beneficiaries) {
+		this.beneficiaries = beneficiaries;
+	}
+	
+	
+}

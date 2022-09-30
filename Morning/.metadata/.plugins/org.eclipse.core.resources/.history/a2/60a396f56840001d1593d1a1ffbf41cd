@@ -1,0 +1,23 @@
+package com.example.demo.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.BillPayment;
+import com.example.demo.repository.BillPaymentDao;
+
+@Service
+public class BillPaymentImpl implements BillPaymentService{
+
+	@Autowired
+	private BillPaymentDao bpdao;
+	
+	@Override
+	public String addBillPayment(BillPayment billPayment) {
+		
+		billPayment.setWalletId(2);
+		bpdao.save(billPayment);
+		return "added....";
+	}
+
+}

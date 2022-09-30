@@ -1,0 +1,35 @@
+package com.example.demo.service;
+
+import javax.websocket.server.ServerEndpoint;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.Customer;
+import com.example.demo.model.Wallet;
+import com.example.demo.repository.CustomerDao;
+import com.example.demo.repository.WalletDao;
+
+@Service
+public class CustomerServiceImpl implements CustomerService{
+
+	@Autowired
+	private CustomerDao cdao;
+	
+	@Autowired
+	private WalletDao wdao;
+	
+	
+	@Override
+	public String addCustomer(Customer customer) {
+//		Wallet wallet = new Wallet();
+//		wallet.setBalance(0.0);
+//		wallet.setCustomer(customer);
+//		customer.setWallet(wallet);
+		
+		cdao.save(customer);
+//		wdao.save(wallet);
+		return "updated";
+	}
+
+}

@@ -1,0 +1,8 @@
+package com.example.demo.service;
+
+import com.example.demo.model.BillPayment;
+
+public interface BillPaymentService {
+	
+	public String addBillPayment(BillPayment billPayment);
+}
